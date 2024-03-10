@@ -15,4 +15,16 @@ public class Baboon {
         this.age = age;
         this.gender = gender;
     }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public Integer getAge() {
+        return this.age;
+    }
+
+    public Boolean getGender() {
+        return this.gender;
+    }
 }

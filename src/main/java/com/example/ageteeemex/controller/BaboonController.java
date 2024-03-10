@@ -2,13 +2,10 @@ package com.example.ageteeemex.controller;
 
 import com.example.ageteeemex.model.Baboon;
 import com.example.ageteeemex.service.BaboonService;
-import com.example.ageteeemex.service.BaboonServiceImpl;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -25,5 +22,10 @@ public class BaboonController {
     @GetMapping
     public HttpEntity<List<Baboon>> getAllBaboons() {
         return new ResponseEntity<>(baboonService.getAllBaboons(), HttpStatus.OK);
+    }
+
+    @PostMapping
+    public HttpEntity<Baboon> addNewBaboon(@RequestParam String name, @RequestParam Integer age) {
+        return new ResponseEntity<>(new Baboon(name, age, Boolean.TRUE), HttpStatus.OK);
     }
 }

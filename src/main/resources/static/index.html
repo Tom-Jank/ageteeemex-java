@@ -8,12 +8,31 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
-    <div id="baboons"> HERE MONKES </div>
+    <div style="display: flex; justify-content: center; align-items: center;">
+        <div id="baboons"> HERE MONKES </div>
+        <button class="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded"
+                id="load-data"
+                hx-get="/api/baboon"
+                hx-target="#baboons"
+                hx-swap="afterend"> CLICK ME!
+        </button>
 
-    <button id="load-data"
-            hx-get="/api/baboon"
-            hx-target="#baboons"> CLICK ME!
-    </button>
+        <button class="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded"
+                id="swap-data"
+                hx-target="#baboons"
+                hx-swap="delete"> CLICK ME CLEAR!</button>
+    </div>
 
+    <form>
+        <label for="name">Name:</label><br>
+        <input type="text" id="name" name="name"><br>
+
+        <label for="age">Email:</label><br>
+        <input type="text" id="age" name="age"><br>
+
+        <button hx-post="/api/baboon" hx-target="#new-baboon" hx-headers="{'Content-Type': 'application/json'}" type="submit">Submit</button>
+    </form>
+
+    <div id="new-baboon"></div>
 </body>
 </html>
